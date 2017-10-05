@@ -5,6 +5,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
 
+/**
+ * Created By Sagun Pandey
+ */
 public class Client {
 
     private static final String OPERATION_ADD = "add";
@@ -58,25 +61,25 @@ public class Client {
     private static void add(int month, int date, String eventDescription) {
         Event event = new Event(month, date, eventDescription);
         try {
-            System.out.println("Add operation invoked");
+            System.out.println("---- Client: Add operation invoked");
             int result = eventServer.add(event);
-            System.out.println("Add operation response code '" + result + "'");
+            System.out.println("---- Client: Add operation response code '" + result + "'");
         } catch (RemoteException e) {
-            System.out.println("Add operation failed");
+            System.err.println("---- Client: Add operation failed");
             e.printStackTrace();
         }
     }
 
     private static void query(int month, int date) {
         try {
-            System.out.println("Query operation invoked");
+            System.out.println("---- Client: Query operation invoked");
             List<Event> events =  eventServer.query(month, date);
 
             for(Event event: events) {
                 System.out.println(event.getDescription());
             }
         } catch (RemoteException e) {
-            System.out.println("Query operation failed");
+            System.err.println("---- Client: Query operation failed");
             e.printStackTrace();
         }
     }

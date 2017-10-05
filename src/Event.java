@@ -1,5 +1,8 @@
 import java.io.Serializable;
 
+/**
+ * Created By Sagun Pandey
+ */
 public class Event implements Serializable {
 
     private int month;
